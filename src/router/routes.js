@@ -3,7 +3,7 @@ import About from "../components/About.vue";
 import Products from "../components/Products/Products.vue";
 import RomanceProducts from "../components/Products/RomanceProducts.vue";
 import HorrorProducts from "../components/Products/HorrorProducts.vue";
-import ScifiProducts from "../components/Products/ScifiProducts.vue";
+import ScifiProducts from "../components/Products/SciFiProducts.vue";
 import ClassicsProducts from "../components/Products/ClassicsProducts.vue";
 import Login from "../components/Login.vue";
 import Register from "../components/Register.vue";
