@@ -10,9 +10,9 @@
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
-  opacity: 0.75;
+  opacity: 0.95;
   filter: brightness(80%);
-  height: 85vh;
+  height: 90vh;
   width: 100%;
   z-index: 0;
   display: flex;
@@ -22,7 +22,7 @@
   @media (max-width: 720px) {
     height: 83vh;
   }
-  @media (min-width: 721px) and (max-width: 1280px) {
+  @media (min-width: 800px) and (max-width: 1400px) {
     height: 100vh;
   }
 

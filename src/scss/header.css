@@ -1,6 +1,13 @@
 * {
   font-family: 'Mate SC', 'cursive';
 }
+/* @media (min-width: 720px) {
+  .navbar ,
+  .navbar-title ,
+  .navbar-collapse {
+    display: none;
+  }
+} */
 .navbar {
   background: rgb(191, 107, 107);
 }
@@ -12,5 +19,6 @@
 .navbar-collapse {
   color: lightslategray;
   margin-left: 40px;
+  margin-right:10px;
   font-size: 25px;
 }

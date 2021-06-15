@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import routes from "./routes";
 import * as fb from "../firebase";
+import {Row, Column} from 'vue-grid-responsive';
 
 Vue.use(VueRouter);
 

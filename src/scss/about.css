@@ -1,8 +1,8 @@
+@import "../global-variables.scss";
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-
 }
 .people-wrapper {
   height: 100%;
@@ -14,11 +14,15 @@
   background-repeat: no-repeat;
   font-family: 'Mate SC', 'cursive';
 
+
 }
 .all-people{
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
+  @media screen and (min-width: 1900px) {
+    padding: 50px 120px 120px 120px;
+  }
   }
 .search-bar-wrapper{
 display: flex;
@@ -27,6 +31,11 @@ display: flex;
  margin-bottom: 10px;
  margin-top: 7px;
  align-self:center;
+ @media screen and (max-width: 720px) {
+  font-size: 20px;
+  height: 80px;
+  width: 250px;
+}
 }
 .single-people-card {
   border: 4px solid;
@@ -41,12 +50,20 @@ display: flex;
     rgba(255, 255, 255, 0.17) 0px 12px 13px, rgba(255, 255, 255, 0.09) 0px -3px 5px;
   margin-bottom: 30px;
   margin-left: 20px;
+  @media screen and (max-width: 720px) {
+    margin: 30px 20px;
+  }
 }
 .people-name, .people-surname {
   text-shadow: 5px 5px 10px black;
   margin-top: 5%;
   font-size: 30px;
   color: white;
+  @media screen and (max-width: 720px) {
+    margin-bottom: 7%;
+    font: {
+      size: $h1-size * 1.4;
+    }}
 }
 .people-image {
   padding: 0px 0px;
@@ -68,8 +85,9 @@ display: flex;
   text-shadow: 5px 5px 10px white;
 }
 .search-bar {
-  width: 100%;
+  width: 30%;
   height: 50px;
+  align-self:center;
   text-align: center;
   color: black;
   font-family: 'Mate SC', 'cursive';
@@ -112,6 +130,24 @@ display: flex;
 }
 .modal-wrapper-info {
   justify-content: center;
+  @media screen and (max-width: 720px) {
+    top: 5%;
+    left: 10%;
+    height: 95%;
+    width: 80%;
+  }
+  @media screen and (min-width: 720px) and (max-width: 1025px) {
+    top: 15%;
+    left: 15%;
+    height: 650px;
+    width: 550px;
+  }
+  @media screen and (min-width: 1025px) and (max-width: 1280px) {
+    top: 1%;
+    left: 30%;
+    height: 600px;
+    width: 550px;
+  }
 }
 .modal-wrapper-info:hover {
   cursor: pointer;
@@ -138,8 +174,8 @@ display: flex;
 }
 .btn-primary, .btn-danger {
   margin-right: 20px;
-  height: 30px;
-  width: 70px;
+  height: 35px;
+  width: 100px;
   justify-content: space-evenly;
   align-items: center;
 }
@@ -170,10 +206,13 @@ margin-bottom:10px;
 
 .uploading-image {
 
-  align:center;
+  align-content:center;
   height: 60%;
   width: 60%;
   border: 3px solid #e9a358;
   border-radius: 10px;
   margin-bottom: 20px;
+}
+.add__modal-title {
+  text-align: center;
 }
