@@ -1,0 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Indie+Flower&display=swap');
+
+$colors: (main: #ebcdac, text-color: #fff);
+$cookie-font: 'Cookie', cursive;
+$indie-font: 'Indie Flower', cursive;
+$h1-size: 50px;
+$h2-size: 35px;
+$h3-size: 28px;
+$p-size: 20px;
+
+*:focus {
+  outline: none;
+}
