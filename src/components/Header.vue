@@ -22,7 +22,8 @@
 </template>
 
 <script>
-  import {mapState} from 'vuex';
+  // import {mapState} from 'vuex';
+  import { userMixin } from '../mixins/userMixin';
   export default {
     methods: {
       logout() {
@@ -30,14 +31,24 @@
       }
     },
     //computed se koristi za dinamicke rekalkulacije i uvek ima return
-    computed: {
-    ...mapState(["userProfile"]),
-    //Ako je korisnik ulogovan, prikazi samo logout
-    //Ako nije, prikazi samo login
-    isLoggedIn() {
-      return Object.keys(this.userProfile).length > 1
-    }
-  },
+  //   computed: {
+  //   ...mapState(["userProfile"]),
+  //   //Ako je korisnik ulogovan, prikazi samo logout
+  //   //Ako nije, prikazi samo login
+  //   isLoggedIn() {
+  //     return Object.keys(this.userProfile).length > 1
+  //   }
+  // },
+    mixins: [
+      userMixin
+    ]
+    // ! umesto computed-a, sada koristimo mixin iz userMixin-a
+    // computed: {
+    //   ...mapState(['userProfile']),
+    //   isLoggedIn() {
+    //     return Object.keys(this.userProfile).length > 1
+    //   }
+    // }
   }
 
 </script>

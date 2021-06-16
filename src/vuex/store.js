@@ -30,12 +30,13 @@ export const store = new Vuex.Store({
       router.push("/products");
     },
 
-    async logout({ commit }) {
+    async logout({ state,commit }) {
       //Odjava korisnika sa firebase-a
       await fb.auth.signOut();
 
       //Reset user profile
       commit("setUserProfile", {});
+      state.userProfile = {};
 
       router.push("/login");
     },
@@ -77,9 +78,14 @@ export const store = new Vuex.Store({
       try {
         var allRomanceProductsSnapShot = await romanceProductsRef.get(); //vraca sve dokumente iz kolekcije
         state.romanceCollection = [];
-        allRomanceProductsSnapShot.forEach(doc => {
+        allRomanceProductsSnapShot.forEach(async doc => {
           const singleRomanceProduct = doc.data();
           singleRomanceProduct["id"] = doc.id;
+          let userId = singleRomanceProduct.userId;
+          let userProfile = await fb.usersCollection.doc(userId).get();
+         // console.log(userProfile.data().name + ' ' + userProfile.data().lastName); // ! radi
+          singleRomanceProduct["firstName"] = await userProfile.data().name;
+          singleRomanceProduct["lastName"] = await userProfile.data().lastName;
           state.romanceCollection.push(singleRomanceProduct);
           console.log(singleRomanceProduct);
         });
@@ -154,9 +160,14 @@ export const store = new Vuex.Store({
         try {
           var allHorrorProductsSnapShot = await horrorProductsRef.get(); //vraca sve dokumente iz kolekcije
           state.horrorCollection = [];
-          allHorrorProductsSnapShot.forEach(doc => {
+          allHorrorProductsSnapShot.forEach(async doc => {
             const singleHorrorProduct = doc.data();
             singleHorrorProduct["id"] = doc.id;
+            let userId = singleHorrorProduct.userId;
+            let userProfile = await fb.usersCollection.doc(userId).get();
+           // console.log(userProfile.data().name + ' ' + userProfile.data().lastName); // ! radi
+            singleHorrorProduct["firstName"] = await userProfile.data().name;
+            singleHorrorProduct["lastName"] = await userProfile.data().lastName;
             state.horrorCollection.push(singleHorrorProduct);
             console.log(singleHorrorProduct);
           });
@@ -231,9 +242,14 @@ export const store = new Vuex.Store({
       try {
         var allClassicsProductsSnapShot = await classicsProductsRef.get(); //vraca sve dokumente iz kolekcije
         state.classicsCollection = [];
-        allClassicsProductsSnapShot.forEach(doc => {
+        allClassicsProductsSnapShot.forEach(async doc => {
           const singleClassicsProduct = doc.data();
           singleClassicsProduct["id"] = doc.id;
+          let userId = singleClassicsProduct.userId;
+          let userProfile = await fb.usersCollection.doc(userId).get();
+         // console.log(userProfile.data().name + ' ' + userProfile.data().lastName); // ! radi
+          singleClassicsProduct["firstName"] = await userProfile.data().name;
+          singleClassicsProduct["lastName"] = await userProfile.data().lastName;
           state.classicsCollection.push(singleClassicsProduct);
           console.log(singleClassicsProduct);
         });
@@ -308,9 +324,14 @@ export const store = new Vuex.Store({
       try {
         var allSciFiProductsSnapShot = await scifiProductsRef.get(); //vraca sve dokumente iz kolekcije
         state.scifiCollection = [];
-        allSciFiProductsSnapShot.forEach(doc => {
+        allSciFiProductsSnapShot.forEach(async doc => {
           const singleSciFiProduct = doc.data();
           singleSciFiProduct["id"] = doc.id;
+          let userId = singleSciFiProduct.userId;
+          let userProfile = await fb.usersCollection.doc(userId).get();
+         // console.log(userProfile.data().name + ' ' + userProfile.data().lastName); // ! radi
+          singleSciFiProduct["firstName"] = await userProfile.data().name;
+          singleSciFiProduct["lastName"] = await userProfile.data().lastName;
           state.scifiCollection.push(singleSciFiProduct);
           console.log(singleSciFiProduct);
         });
@@ -388,9 +409,14 @@ export const store = new Vuex.Store({
       try {
         var allPeopleSnapShot = await peopleRef.get(); //vraca sve dokumente iz kolekcije
         state.peopleCollection = [];
-        allPeopleSnapShot.forEach(doc => {
+        allPeopleSnapShot.forEach(async doc => {
           const singlePeople = doc.data();
           singlePeople["id"] = doc.id;
+          let userId = singlePeople.userId;
+          let userProfile = await fb.usersCollection.doc(userId).get();
+         // console.log(userProfile.data().name + ' ' + userProfile.data().lastName); // ! radi
+          singlePeople["firstName"] = await userProfile.data().name;
+          singlePeople["lastName"] = await userProfile.data().lastName;
           state.peopleCollection.push(singlePeople);
           console.log(singlePeople);
         });
@@ -463,6 +489,8 @@ export const store = new Vuex.Store({
     //pa se zbog toga koriste mutacije kako bi se postavilo novo stanje userProfile
     setUserProfile(state, val) {
       state.userProfile = val;
+      state.userProfile['id'] = fb.auth.currentUser.uid;
+      console.log(state.userProfile);
     }
   }
 });
